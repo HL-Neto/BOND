@@ -14,10 +14,13 @@ public class tela {
 
     // posiçao do player / posição inicial
     input posp = new input();
+  
    
     int pospL = 4;
     int pospC = 1;
     
+    // vou iniciar o player aqui e n no switch pq vai q a gente precisa dele dnovo
+    player player = new player();
     
     
     
@@ -52,8 +55,16 @@ public class tela {
             }
         }
 
+
+        // uns inimigos improvisados 
+        int i = 0;
+        while( i < coluna){
+            matriz [0][i] = "v";
+            i++;
+        }  
+
         
-        //posição da nave -- e alterada com updt
+        //posição da nave -- é alterada com updt
         matriz[pospL][pospC] = "^";
         
         
@@ -87,6 +98,8 @@ public class tela {
         
         
     }
+
+    
 
 }
     
