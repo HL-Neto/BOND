@@ -1,4 +1,4 @@
-package JAVA.Spacewar;
+package JAVA.BOND;
 
 import java.util.*;
 
@@ -19,7 +19,7 @@ public class tela {
     int pospL = 4;
     int pospC = 1;
     
-    // vou iniciar o player aqui e n no switch pq vai q a gente precisa dele dnovo
+    // vou iniciar o player aqui e n no switch pq vai q a gente precisa dele dnovo -- a ideia do switch foi pro krl, mas a gente ainda precisa ver onde vai chamar essa função player
     player player = new player();
     
     
@@ -64,7 +64,7 @@ public class tela {
         }  
 
         
-        //posição da nave -- é alterada com updt
+        //posição da player -- é alterada com updt
         matriz[pospL][pospC] = "^";
         
         
