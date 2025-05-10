@@ -1,4 +1,4 @@
-package JAVA.Spacewar;
+package JAVA.BOND;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class menu {
          
 
 
-        System.out.println("\n== < \033[1mSPACE WAR\033[0m > ==");   // titulo - // Código ANSI para negrito, tudo que tiver dentro deles fica em negrito
+        System.out.println("\n== < \033[1m007\033[0m > ==");   // titulo - // Código ANSI para negrito, tudo que tiver dentro deles fica em negrito
 
         System.out.println("\n\n start");
         System.out.println("\n\n score");
@@ -28,6 +28,10 @@ public class menu {
         
     }
 
+
+
+
+    
     public void play(){
             
         System.out.print("nome:");
@@ -41,13 +45,18 @@ public class menu {
                 System.out.println("voltar");
                 String inpuut = scaaner.nextLine();
                 System.out.println("carregando...");
+                System.out.println(" 'DIGITE ALGUMA COISA PRA INICIAR'");
+
                 // da dando erro aqui, ta precisando de 2 inputs pra poder seguir com o jogo
 
-                    if (inpuut.equals("play")){
+                if (inpuut.equals("play")){ // se conseguir tirar o if e colocar o swhitch case 
+                                
+
+                    // switch (inpuut) , ai c colocar as opçoes como instrings, tava como switch case, mas eu tentei cooncertar um erro ent coloquei como if, mas n mudou porra nenhuma, ent se conseguir colocar de volta pra switch
                         
                         
 
-                        boolean t = true;
+                        boolean t = true; // loop para o jogo rodar, vamos substitur t pela vida
 
                         while ( t = true){
                         
@@ -59,7 +68,7 @@ public class menu {
                     if (inpuut.equals("menu")){
                         new menu();
                         // finaliza esse menu e vai pro anterior
-                    };
+                };
                 
             
                 
