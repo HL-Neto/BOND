@@ -1,4 +1,4 @@
-package JAVA.BOND;
+package bond;
 
 import java.util.*;
 
@@ -86,13 +86,13 @@ public class tela {
     
     public void updt(){ // atualizar a tela etc etc
         
-        if ( posp.mid == true){
+        if ( posp.sht == true){
             pospC = 1;
         }
-        if ( posp.esq == true){
+        if ( posp.def == true){
             pospC = 0;
         }
-        if ( posp.dir == true){
+        if ( posp.rel == true){
             pospC = 2;
         }
         
@@ -102,5 +102,3 @@ public class tela {
     
 
 }
-    
-

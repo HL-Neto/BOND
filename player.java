@@ -1,8 +1,7 @@
-package JAVA.BOND;
-
+package bond;
 
 public class player {
-   
+	   
     // vamo tentar incrementar isso no jogo
 
     String pNome;
