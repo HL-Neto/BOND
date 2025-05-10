@@ -1,8 +1,8 @@
-package JAVA.Spacewar;
+package JAVA.BOND;
 
 import java.util.*;
 
-public class SpacewarMain {
+public class main {
     
       
 
