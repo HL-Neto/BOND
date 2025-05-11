@@ -1,4 +1,4 @@
-package JAVA.BOND;
+package JAVA.bond;
 
 import java.util.*;
 
@@ -6,7 +6,7 @@ public class input {
     
     //tudo aqui e mt auto-explicativo
     
-    boolean esq,dir,mid;
+    boolean sht,def,rel;
 
     Scanner scaner = new Scanner(System.in);
     
@@ -17,21 +17,21 @@ public class input {
         
         String input = scaner.nextLine();
 
-        mid = false;
-        esq = false;
-        dir = false;
+        sht = false;
+        def = false;
+        rel = false;
 
       
         
         
         if (input.equals("3")) {
-            dir = true;
+            rel = true;
         } 
         if (input.equals("1")) {
-            esq = true; 
+            sht = true; 
         }
         if (input.equals("2")) {
-            mid = true;
+            def = true;
         }
 
 
@@ -42,4 +42,3 @@ public class input {
         
     
 }
-
