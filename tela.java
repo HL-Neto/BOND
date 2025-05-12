@@ -4,47 +4,125 @@ import java.util.*;
 
 public class tela {
     
-
+    boolean shild = true;
+    boolean life = true;
+    // indices 
+    int l;
+    int c;
+    
     // configuração da matriz
     
     int linha = 5;
     int coluna = 3;
 
-   
+    String[][] matriz = new String [linha][coluna]; // criaçãoda matriz
 
     // posiçao do player / posição inicial
-    input posp = new input();
+    
   
    
     int pospL = 4;
     int pospC = 1;
     
     // vou iniciar o player aqui e n no switch pq vai q a gente precisa dele dnovo -- a ideia do switch foi pro krl, mas a gente ainda precisa ver onde vai chamar essa função player
+    
+   
     player player = new player();
     
     
     
     public tela(){
         
-        
-        // auto explicatico, puxa a função update 
-        updt();
-
-
-        
-        // indices
-        int l;
-        int c;
-        
+        while (life == true) {
+            
         
 
-        System.out.print("\033[H\033[2J"); // limpam o console 
-        System.out.flush();
+            field1();
+            
+            System.out.print("\033[H\033[2J"); // limpam o console 
+            System.out.flush();
+            
+            // plyr
+            matriz[pospL][pospC] = "^";
+            // ini
+            matriz[0][1] = "v";
+
+            field2();
+            
+            updt();
         
-        String[][] matriz = new String [linha][coluna]; // criaçãoda matriz
+        }
+    
+    }
+
+    
+    public void updt(){ // atualizar a tela etc etc
+        
+        input comands = new input();
+
+       
+       
+
+        if ( comands.sht == true){
+            
+            sht();
+            field2();
+
+            try {
+       
+                Thread.sleep(750); // espera 3 segundos
+        
+            } catch (InterruptedException e) {
+              
+                e.printStackTrace();
+            
+            }
+            
+        }
+
+        if ( comands.def == true){
+            
+            
+            def();
+            field2();
+
+            try {
+       
+                Thread.sleep(750); // espera 3 segundos
+        
+            } catch (InterruptedException e) {
+              
+                e.printStackTrace();
+            
+            }
+            defAni();
+        }
+        if ( comands.rel == true){
+           
+          
+           
+            try {
+       
+                Thread.sleep(750); // espera 3 segundos
+        
+            } catch (InterruptedException e) {
+              
+                e.printStackTrace();
+            
+            }
+             
+        
+        }
+        
+        
+    }
+    
+    
+    
+    
+    public void field1 (){
         
 
-        // deixa os espaços em branco
         for ( l = 0; l < linha; l++){
             for (  c = 0; c < coluna; c++ ){
 
@@ -54,21 +132,10 @@ public class tela {
                 
             }
         }
+    }
+    public void field2 (){
 
-
-        // uns inimigos improvisados 
-        int i = 0;
-        while( i < coluna){
-            matriz [0][i] = "v";
-            i++;
-        }  
-
-        
-        //posição da player -- é alterada com updt
-        matriz[pospL][pospC] = "^";
-        
-        
-        // adiciona as linhas laterais
+         // adiciona as linhas laterais
         for ( l = 0; l < linha ; l++){
             System.out.print("|");
             for( c= 0;  c < coluna; c++){
@@ -78,27 +145,48 @@ public class tela {
             System.out.println("|");
         }
         
-       
-
-      
     }
 
+ 
+    // colocar dentro do state //
+    public void  shtAni(){
+
+        matriz[3][1] = "*";
     
-    public void updt(){ // atualizar a tela etc etc
-        
-        if ( posp.sht == true){
-            pospC = 1;
-        }
-        if ( posp.def == true){
-            pospC = 0;
-        }
-        if ( posp.rel == true){
-            pospC = 2;
-        }
-        
-        
+    }
+     public void  defAni(){
+
+        matriz[3][1] = "_";
+    
+    }
+    public void  relAni(){
+
+        matriz[3][1] = "[]";
+    
+    }
+    
+    
+
+    public void def(){
+
+        boolean shild = true;
+
+        shtAni();
+
     }
 
+    public void sht(){
+
+        shtAni();
+
+        if (shild == false){
+            life = false;
+        }else{
+            System.out.println("DEFESA");
+        }
+    
+    }
+    
     
 
 }
