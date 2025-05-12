@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class player {
 	   
-    // vamo tentar incrementar isso no jogo
+  
 
-   public static String Nome (){
+   
+   
+   
+     public static String Nome (){
 
      // uma inserção mais responsavel do nome //
      
@@ -42,7 +45,7 @@ public class player {
     public void Life ( int pLife ){
 
         pLife = 3;
-
+        
         // se tomar dano //
         // faz uma verificação  pLife - dano //
         // if pLife > 0 ... o jogo continua ou acaba, fazer isso vai ser mais complicado doq parece//
@@ -54,4 +57,11 @@ public class player {
         // sendo no minimo 3 turnos, tendo em vista q cada um dos dois vai ter 3 vidas //
 
    }
+
+
+
+
+
+
+  
 }
