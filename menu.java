@@ -51,14 +51,23 @@ public class menu {
 		System.out.println("\n voltar");
 		
 		String escolha2 = scaaner.nextLine();
+
+		
 		
 		switch (escolha2) {
 		case "play":
-			new tela();
+			
+				
+				new tela();
+			
+			
 			break;
+			
 		case "voltar":
+			
 			new menu();
 			break;
+		
 		default:
 			System.out.println("Opcao invalida");
 		}
