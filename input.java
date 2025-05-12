@@ -9,13 +9,13 @@ public class input {
     boolean sht,def,rel;
 
     Scanner scaner = new Scanner(System.in);
-    
-   
 
     public input(){
         
+       
         
-        String input = scaner.nextLine();
+        int action =  scaner.nextInt();
+        
 
         sht = false;
         def = false;
@@ -24,18 +24,19 @@ public class input {
       
         
         
-        if (input.equals("3")) {
+        if (action == 3) {
             rel = true;
         } 
-        if (input.equals("1")) {
+        if (action == 1) {
             sht = true; 
         }
-        if (input.equals("2")) {
+        if (action == 2) {
             def = true;
         }
 
 
     }
+    
 
    
 
