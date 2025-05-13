@@ -1,50 +1,67 @@
-package JAVA.BOND;
+package JAVA.bond;
 
 import java.util.*;
 
 public class tela {
     
 
-    // configuração da matriz
+    // configuração e criação da matriz
     
     int linha = 5;
     int coluna = 3;
 
-   
+    int c;
+    int l;
 
-    // posiçao do player / posição inicial
-    input posp = new input();
-  
+    String[][] matriz = new String [linha][coluna]; // criaçãoda matriz
+
    
-    int pospL = 4;
-    int pospC = 1;
-    
-    // vou iniciar o player aqui e n no switch pq vai q a gente precisa dele dnovo -- a ideia do switch foi pro krl, mas a gente ainda precisa ver onde vai chamar essa função player
-    player player = new player();
-    
-    
     
     public tela(){
         
+        boolean vida = true;
+
+        while (vida) {
+            fieldC();
+            refresh();
+            playerT();
+            fieldL();
+            updt();
+        }
         
-        // auto explicatico, puxa a função update 
-        updt();
+      
+    }
+
+    
+    public void updt(){ // atualiza os comandos do plyerC
+        
+        input playerComand = new input();
+
+        if ( playerComand.sht == true){
+            
+            shtAni();
+           
+        }
+        if ( playerComand.def == true){
+            
+            defAni();
+           
+        }
+        if ( playerComand.rel == true){
+            
+            relAni();
+           
+        }
+        
+        
+    }
 
 
-        
-        // indices
-        int l;
-        int c;
-        
-        
+    // criação da tela //
 
-        System.out.print("\033[H\033[2J"); // limpam o console 
-        System.out.flush();
-        
-        String[][] matriz = new String [linha][coluna]; // criaçãoda matriz
-        
+    public void fieldC(){
 
-        // deixa os espaços em branco
+        
         for ( l = 0; l < linha; l++){
             for (  c = 0; c < coluna; c++ ){
 
@@ -55,20 +72,10 @@ public class tela {
             }
         }
 
+    }
 
-        // uns inimigos improvisados 
-        int i = 0;
-        while( i < coluna){
-            matriz [0][i] = "v";
-            i++;
-        }  
+    public void fieldL(){
 
-        
-        //posição da player -- é alterada com updt
-        matriz[pospL][pospC] = "^";
-        
-        
-        // adiciona as linhas laterais
         for ( l = 0; l < linha ; l++){
             System.out.print("|");
             for( c= 0;  c < coluna; c++){
@@ -77,30 +84,66 @@ public class tela {
         
             System.out.println("|");
         }
-        
+
+
+    }
+
+    public void playerT(){
+
+        matriz[0][1] = "v";
+        matriz[4][1] = "^";
+    }
+
+    public void refresh(){
+
+        System.out.print("\033[H\033[2J"); // limpam o console 
+        System.out.flush();
+    
+    }
+
+    // fim da criação de tela // 
+
+
+
+    
+    
+    // animção das ações //
+
+    public void shtAni(){
+
        
+        matriz[3][1] = "*";
+        fieldL();
+        updtTimer();
+    
+    } 
+    public void defAni(){
 
-      
+        matriz[3][1] = "_";
+        fieldL();
+        updtTimer();
+
+    }   
+    public void relAni(){
+
+        matriz[3][1] = "@";
+        fieldL();
+        updtTimer();
+
     }
 
-    
-    public void updt(){ // atualizar a tela etc etc
-        
-        if ( posp.mid == true){
-            pospC = 1;
+    // fim das animações // 
+
+
+    // timer //
+    void updtTimer(){
+
+        try {
+            Thread.sleep(750);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        if ( posp.esq == true){
-            pospC = 0;
-        }
-        if ( posp.dir == true){
-            pospC = 2;
-        }
-        
-        
     }
 
-    
 
 }
-    
-
