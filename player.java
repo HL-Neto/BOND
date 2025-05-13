@@ -38,16 +38,6 @@ public class player {
      }
 
    
-    
-    public void Life ( int pLife ){
-
-        pLife = 3;
-
-        // se tomar dano //
-        // faz uma verificação  pLife - dano //
-        // if pLife > 0 ... o jogo continua ou acaba, fazer isso vai ser mais complicado doq parece//
-   }
-
    public void score ( int pScore){
 
         // quanto menor o turno q o inimigo morrer mais alto na tabela ele vai ficar//
