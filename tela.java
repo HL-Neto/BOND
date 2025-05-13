@@ -1,9 +1,13 @@
 package JAVA.bond;
 
-import java.util.*;
 
 public class tela {
     
+
+
+    int ammo = 0;
+    boolean shild = false;
+    boolean vida = true;
 
     // configuração e criação da matriz
     
@@ -19,15 +23,23 @@ public class tela {
     
     public tela(){
         
-        boolean vida = true;
+        
+
+
 
         while (vida) {
+
+            shild = false; // e pra setar aqui pq o escudo so precisa ficar ativo por um turno
+            
             fieldC();
             refresh();
-            playerT();
+            playerPOS();
             fieldL();
             updt();
-        }
+
+            
+        
+        } 
         
       
     }
@@ -39,17 +51,20 @@ public class tela {
 
         if ( playerComand.sht == true){
             
-            shtAni();
            
+            shtCmd();
+            
+             
         }
         if ( playerComand.def == true){
             
-            defAni();
+            
+            defCmd();
            
         }
         if ( playerComand.rel == true){
             
-            relAni();
+            relCmd();
            
         }
         
@@ -67,10 +82,12 @@ public class tela {
 
                 
                 matriz[l][c] = " ";
-                
+
                 
             }
+            
         }
+        
 
     }
 
@@ -88,7 +105,7 @@ public class tela {
 
     }
 
-    public void playerT(){
+    public void playerPOS(){
 
         matriz[0][1] = "v";
         matriz[4][1] = "^";
@@ -109,23 +126,36 @@ public class tela {
     
     // animção das ações //
 
-    public void shtAni(){
-
-       
-        matriz[3][1] = "*";
-        fieldL();
-        updtTimer();
-    
+    public void shtCmd(){
+            
+        if (ammo > 0){
+            
+            vida = kombat.sht(shild,ammo);
+            matriz[3][1] = "*";
+            fieldL();
+            updtTimer();
+        
+        
+        }else{
+               
+            System.out.println("SEM BALAS CHEFE");
+            updtTimer();
+        }
+        
+        
     } 
-    public void defAni(){
+    public void defCmd(){
 
+        shild = kombat.def();// puxa a função do kombat 
         matriz[3][1] = "_";
         fieldL();
         updtTimer();
 
     }   
-    public void relAni(){
+    public void relCmd(){
 
+        System.out.println( "MUNIÇÃO : " +  ammo + " + 1");
+        ammo = kombat.rel(ammo);
         matriz[3][1] = "@";
         fieldL();
         updtTimer();
