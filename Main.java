@@ -1,9 +1,9 @@
-package JAVA.bond;
+package bond;
 
 public class Main {
     
     public static void main(String[] args) {
         
-        new tela();
+        new Tela();
     }
 }
