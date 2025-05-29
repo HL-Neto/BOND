@@ -1,32 +1,31 @@
-package JAVA.bond;
+// ta tudo errado
+package bond;
 
 public class Cards {
-
+private Playerconfig player;
     
+    public Cards(Playerconfig player) {
+        this.player = player;
+    }
     
-    public void extraShild(){
-        //extraSuit
-        //escudo extra
+    public void extraShild() {
+        player.DEF();  
     }
 
     public void imunidade(){
-        //wonderGuard
-        //imunidade por um turno
+       
     }
 
     public void heal(){
-        //estusFlask
-        // cura
+        player.vida += 1;
     }
 
     public void doubleDMG(){
-        // shotgun
-        // tiro 2x dmg 
+        player.SHT();
     }
 
     public void extraAmmo(){
-         //preparetion
-        // bala extra
+        player.ammo += 1;
     }
 
     public void curseAmmo(){
