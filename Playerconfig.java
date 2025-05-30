@@ -1,4 +1,4 @@
-package bond;
+
 
 import java.util.Scanner;
 import java.awt.event.KeyEvent;
@@ -14,14 +14,15 @@ public class Playerconfig {
 
     public boolean atirar = false , defender = false , municao = false;
 
-    // TESTE //
-     public void keyPressed(KeyEvent e) {
+    
+    public void keyPressed(KeyEvent e) {
        
         int code = e.getKeyCode();
         
         
         if(code == KeyEvent.VK_W){
             atirar = true;
+
 
             SHT();
         }
@@ -50,7 +51,7 @@ public class Playerconfig {
    	
        
     }
-    //       //
+
     public int REL(){
 
         if (ammo == 4){
