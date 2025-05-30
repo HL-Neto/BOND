@@ -1,4 +1,4 @@
-package bond;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -111,7 +111,8 @@ public class Tela extends JFrame{
         Image fundo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\fase_background.png").getImage();
         Image bandido = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bandido.png").getImage();
         Image mao_direita = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\mao_direita.png").getImage();
-        Image disparo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\disparo.png").getImage();   
+        Image disparo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\disparo.png").getImage(); 
+        Image recarga = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\recarregar.png").getImage();     
         
         @Override
         protected void paintComponent(Graphics g) {
@@ -127,9 +128,19 @@ public class Tela extends JFrame{
             
             if (player.atirar) {
                 
+                
+                
                 g.drawImage(disparo, 0, 0, getWidth(), getHeight(), this);
                 repaint();
                 
+
+            }
+
+            if (player.municao){
+                
+                g.drawImage(recarga, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+
             }
 
             
@@ -169,7 +180,6 @@ public class Tela extends JFrame{
             }
 
             
-                
             // cria o time pra cada circunstancia//
             if (player.atirar || player.defender || player.municao){
 
@@ -178,8 +188,12 @@ public class Tela extends JFrame{
                     // Inicia um Timer que dura 1 segundo
                     executionTimer = new Timer(1000, evt -> {
                         
+                        player.defender = false;
+                        player.municao = false;
                         player.atirar = false;
+                        
                         fasePainel.repaint();
+                    
                     });
                 
                     executionTimer.setRepeats(false);
@@ -202,13 +216,4 @@ public class Tela extends JFrame{
 
 
 }
-
-
-
-
-
-    
-
-
-
 
