@@ -1,4 +1,4 @@
-package bond;
+
 
 import java.util.Random;
 
@@ -8,7 +8,7 @@ public class Playerbot extends Playerconfig {
 	public Playerbot() {
 		super(0, 0, 3);
 		this.random = new Random();
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub -- isso aqui foi gpt?
 	}
 	
 	public void acaobot() {
@@ -27,6 +27,7 @@ public class Playerbot extends Playerconfig {
         }
     }
 }
+	
 	
 	
 
