@@ -1,13 +1,7 @@
-package bond;
+
 
 public class Player extends Playerconfig {
-
-	public Player() {
-		super(0, 0, 3);
-		
-	}
-	
-	
-	
-
+    public Player() {
+        super(0, 0, 3);
+    }
 }
