@@ -1,5 +1,6 @@
-// ta tudo errado
-package bond;
+// ta tudo errado -- tirei o package pq tava dando um erro no meu 
+
+
 
 public class Cards {
 private Playerconfig player;
