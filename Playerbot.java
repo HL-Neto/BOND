@@ -1,3 +1,4 @@
+package bond;
 
 
 import java.util.Random;
@@ -9,6 +10,7 @@ public class Playerbot extends Playerconfig {
 
     boolean botshoot = false, botdef = false, botrell = false;
 
+     
 
 	
     public Playerbot() {
@@ -36,18 +38,19 @@ public class Playerbot extends Playerconfig {
                 
                 botshoot = true;
                 SHT();
-                
+                System.out.println("Bot atirou");
                 break;
             case 1:
 
                 botdef = true;
                 DEF();
-                
+                System.out.println("Bot defendeu");
                 break;
             case 2:
 
                 botrell = true;
                 REL();
+                System.out.println("Bot recarregou");
                 
                 break;
         
@@ -56,7 +59,7 @@ public class Playerbot extends Playerconfig {
         
         if (countdown != null && countdown.isRunning()){
 
-                countdown.stop(); // Para o anterior, se existir
+                countdown.stop(); // Para um time novo caso ja tenha outro rolando
         }
         
         countdown = new Timer(5000, evt -> {
@@ -69,5 +72,4 @@ public class Playerbot extends Playerconfig {
     
     }
 }
-	
 	
