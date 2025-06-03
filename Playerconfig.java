@@ -1,48 +1,20 @@
-
-
-import java.util.Scanner;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
+import javax.swing.Timer;
 
 public class Playerconfig {
     
+    boolean cd = false;
+
 	protected int ammo;
     protected int shild;
     protected int vida;
     
-
-    public boolean atirar = false , defender = false , municao = false;
-
     
-    public void keyPressed(KeyEvent e) {
-       
-        int code = e.getKeyCode();
-        
-        
-        if(code == KeyEvent.VK_W){
-            atirar = true;
+    
+    public boolean atirar = false , defender = false , municao = false, actCD = false;
 
+    Timer countdown;
 
-            SHT();
-        }
-
-        if(code == KeyEvent.VK_Q){
-            defender = true;
-
-            DEF();
-        }
-
-        if(code == KeyEvent.VK_E){
-            municao = true;
-
-            REL();
-        }
-
-
-      
-        
-    }
+  
 
     public Playerconfig(int ammo, int shild, int vida){
     	this.ammo = ammo;
@@ -56,10 +28,11 @@ public class Playerconfig {
 
         if (ammo == 4){
 
-            System.out.println("balas carregadas ao maximo");
 
             return ammo;
         }
+        
+        
         ammo++;
         return ammo;
     }
@@ -68,7 +41,6 @@ public class Playerconfig {
 
         if( shild == 4){
 
-            System.out.println("escudos carregados ao maximo");
 
             return shild;
         }
@@ -76,25 +48,27 @@ public class Playerconfig {
         return shild;
     }
 
-    public int SHT(){
+    public int SHT(Playerconfig alvo){
 
         if( ammo <= 0 ){
 
-            System.out.println("sem balas chefe  "+ ammo);
+            
             return ammo;
         }
 
 
         if (shild > 0){
 
-            shild -- ;
+            alvo.shild -- ;
             ammo--;
 
             return ammo ;
         } else {
 
-            DMG() ;
+            alvo.DMG() ;
         }
+
+        
         ammo--;
         return ammo ; 
         
@@ -105,3 +79,4 @@ public class Playerconfig {
     
     }
 }
+
