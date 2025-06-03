@@ -12,7 +12,7 @@ public class Tela extends JFrame{
 
     Timer executionTimer; 
    
-
+    Playerbot bot = new Playerbot();
     Player player = new Player();
 
     JPanel menuPainel = new JPanel() {
@@ -108,44 +108,92 @@ public class Tela extends JFrame{
     
     // Cria o painel com a imagem de fundo
     JPanel fasePainel = new JPanel() {
-        Image fundo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\fase_background.png").getImage();
-        Image bandido = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bandido.png").getImage();
-        Image mao_direita = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\mao_direita.png").getImage();
-        Image disparo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\disparo.png").getImage(); 
-        Image recarga = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\recarregar.png").getImage();     
         
-        @Override
+        Image fundo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\fase_background.png").getImage();
+        
+        //player//
+        Image mao_direita = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\mao_direita.png").getImage();
+        Image disparo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\disparo.png").getImage();   
+        Image recarga = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\recarregar.png").getImage(); 
+        Image escudo_1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo.png").getImage();
+        Image escudo_2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo_2.png").getImage();
+        Image escudo_3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo_3.png").getImage();
+        
+        //bot//
+       
+       Image bandido = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bandido.png").getImage();
+       Image botescudo_1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_1.png").getImage();
+       Image botescudo_2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_2.png").getImage();
+       Image botescudo_3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_3.png").getImage();
+       Image bottiro = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bottiro.png").getImage();
+       Image botrecarga =  new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botrecarga.png").getImage();
+       Image botdano =  new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botdano.png").getImage();
+        
+
+       @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
 
           
             g.drawImage(fundo, 0, 0, getWidth(), getHeight(), this);
-            
-            g.drawImage(bandido,0 ,0, getWidth(), getHeight(), this);
             g.drawImage(mao_direita, 0, 0, getWidth(), getHeight(), this);
             
             
+
+            // player if //
             
             if (player.atirar) {
-                
-                
-                
                 g.drawImage(disparo, 0, 0, getWidth(), getHeight(), this);
-                repaint();
-                
-
-            }
-
-            if (player.municao){
-                
-                g.drawImage(recarga, 0, 0, getWidth(), getHeight(), this);
-                repaint();
-
             }
 
             
+            if (player. municao) {
+                g.drawImage(recarga, 0, 0, getWidth(), getHeight(), this);
+            }
 
-        
+            
+            if (player.shild == 1){
+                g.drawImage(escudo_1, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            }
+            if (player.shild == 2){
+                g.drawImage(escudo_2, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            }
+            if (player.shild == 3){
+                g.drawImage(escudo_3, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            }
+
+            // bot if //
+           
+            if (bot.botshoot) {
+                g.drawImage(bottiro, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            
+            } else if (bot.botrell) {
+               
+                g.drawImage(botrecarga, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            
+            } else {
+                g.drawImage(bandido, 0, 0, getWidth(), getHeight(), this);
+            }
+            
+            
+            if (bot.shild == 1){
+                g.drawImage(botescudo_1, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            }
+            if (bot.shild == 2){
+                g.drawImage(botescudo_2, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            }
+            if (bot.shild == 3){
+                g.drawImage(botescudo_3, 0, 0, getWidth(), getHeight(), this);
+                repaint();
+            }
+         
         
         }
     };
@@ -180,6 +228,7 @@ public class Tela extends JFrame{
             }
 
             
+                
             // cria o time pra cada circunstancia//
             if (player.atirar || player.defender || player.municao){
 
@@ -188,13 +237,18 @@ public class Tela extends JFrame{
                     // Inicia um Timer que dura 1 segundo
                     executionTimer = new Timer(1000, evt -> {
                         
-                        player.defender = false;
-                        player.municao = false;
-                        player.atirar = false;
-                        
-                        fasePainel.repaint();
+                    player.municao = false;
+                    player.atirar = false;
+    
+                    bot.botshoot = false;
+                    bot.botrell = false;
+
+   
+                    bot.acaobot(); 
+    
+                    fasePainel.repaint(); 
                     
-                    });
+                });
                 
                     executionTimer.setRepeats(false);
                     executionTimer.start();
@@ -216,4 +270,13 @@ public class Tela extends JFrame{
 
 
 }
+
+
+
+
+
+    
+
+
+
 
