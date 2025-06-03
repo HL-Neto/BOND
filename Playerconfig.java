@@ -1,6 +1,13 @@
+package bond;
+
 import javax.swing.Timer;
 
 public class Playerconfig {
+	protected Playerconfig alvo;
+	
+	public void setAlvo(Playerconfig alvo) {
+        this.alvo = alvo;
+    }
     
     boolean cd = false;
 
@@ -8,7 +15,7 @@ public class Playerconfig {
     protected int shild;
     protected int vida;
     
-
+    
     
     public boolean atirar = false , defender = false , municao = false, actCD = false;
 
@@ -28,12 +35,10 @@ public class Playerconfig {
 
         if (ammo == 4){
 
-            System.out.println("balas carregadas ao maximo");
 
             return ammo;
         }
         
-        System.out.println("balas atuais = "+ ammo);
         
         ammo++;
         return ammo;
@@ -43,7 +48,6 @@ public class Playerconfig {
 
         if( shild == 4){
 
-            System.out.println("escudos carregados ao maximo");
 
             return shild;
         }
@@ -52,29 +56,31 @@ public class Playerconfig {
     }
 
     public int SHT(){
+    	
 
-        if( ammo <= 0 ){
-
-            System.out.println("sem balas chefe  "+ ammo);
+        if( ammo <= 0 || alvo == null  ){
+        	System.out.println("Sem municao");
             
             return ammo;
         }
 
 
-        if (shild > 0){
+        if (alvo.shild > 0){
 
-            shild -- ;
+            alvo.shild -- ;
+            System.out.println("Acertou escudo do alvo! Escudos restantes: " + alvo.shild);
             ammo--;
 
             return ammo ;
         } else {
 
-            DMG() ;
+            alvo.DMG() ;
+            System.out.println("Acertou o alvo! Vida restante: " + alvo.vida);
+            ammo--;
         }
 
-        System.out.println("balas atuais = "+ ammo);
         
-        ammo--;
+       
         return ammo ; 
         
     }
