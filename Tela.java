@@ -1,9 +1,16 @@
+package bond;
 
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.KeyAdapter;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class Tela extends JFrame{
     
@@ -16,7 +23,7 @@ public class Tela extends JFrame{
     Player player = new Player();
 
     JPanel menuPainel = new JPanel() {
-        Image menu_fundo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\menu_background.png").getImage();
+        Image menu_fundo = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\menu_background.png").getImage();
 
             @Override
             protected void paintComponent(Graphics g) {
@@ -39,6 +46,9 @@ public class Tela extends JFrame{
         add(menuPainel);
 
         setVisible(true);
+        
+        player.setAlvo(bot);
+        bot.setAlvo(player);
     }
 
     
@@ -57,8 +67,8 @@ public class Tela extends JFrame{
         
         // opções + botões //
 
-        JButton playButton = new JButton(new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\play_buttom.png"));  //substituir por imagem//
-        JButton exitButton = new JButton(new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\exit_buttom.png"));
+        JButton playButton = new JButton(new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\play_buttom.png"));  //substituir por imagem//
+        JButton exitButton = new JButton(new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\exit_buttom.png"));
 
 
         // retira as configurações default + coloca um background vermelho 
@@ -109,25 +119,25 @@ public class Tela extends JFrame{
     // Cria o painel com a imagem de fundo
     JPanel fasePainel = new JPanel() {
         
-        Image fundo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\fase_background.png").getImage();
+        Image fundo = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\fase_background.png").getImage();
         
         //player//
-        Image mao_direita = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\mao_direita.png").getImage();
-        Image disparo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\disparo.png").getImage();   
-        Image recarga = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\recarregar.png").getImage(); 
-        Image escudo_1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo.png").getImage();
-        Image escudo_2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo_2.png").getImage();
-        Image escudo_3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo_3.png").getImage();
+        Image mao_direita = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\mao_direita.png").getImage();
+        Image disparo = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\disparo.png").getImage();   
+        Image recarga = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\recarregar.png").getImage(); 
+        Image escudo_1 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\escudo.png").getImage();
+        Image escudo_2 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\escudo_2.png").getImage();
+        Image escudo_3 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\escudo_3.png").getImage();
         
         //bot//
        
-       Image bandido = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bandido.png").getImage();
-       Image botescudo_1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_1.png").getImage();
-       Image botescudo_2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_2.png").getImage();
-       Image botescudo_3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_3.png").getImage();
-       Image bottiro = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bottiro.png").getImage();
-       Image botrecarga =  new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botrecarga.png").getImage();
-       Image botdano =  new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botdano.png").getImage();
+       Image bandido = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\bandido.png").getImage();
+       Image botescudo_1 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botescudo_1.png").getImage();
+       Image botescudo_2 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botescudo_2.png").getImage();
+       Image botescudo_3 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botescudo_3.png").getImage();
+       Image bottiro = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\bottiro.png").getImage();
+       Image botrecarga =  new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botrecarga.png").getImage();
+       Image botdano =  new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botdano.png").getImage();
         
 
        @Override
@@ -143,7 +153,12 @@ public class Tela extends JFrame{
             // player if //
             
             if (player.atirar) {
-                g.drawImage(disparo, 0, 0, getWidth(), getHeight(), this);
+                
+                if (player.ammo > 0){
+                    g.drawImage(disparo, 0, 0, getWidth(), getHeight(), this);
+                }else{
+                     g.drawImage(mao_direita, 0, 0, getWidth(), getHeight(), this);
+                } 
             }
 
             
@@ -163,6 +178,9 @@ public class Tela extends JFrame{
             if (player.shild == 3){
                 g.drawImage(escudo_3, 0, 0, getWidth(), getHeight(), this);
                 repaint();
+            }
+            if(player.vida == 0) {
+            	System.out.println("Jogador perdeu");
             }
 
             // bot if //
@@ -193,6 +211,10 @@ public class Tela extends JFrame{
                 g.drawImage(botescudo_3, 0, 0, getWidth(), getHeight(), this);
                 repaint();
             }
+            if (bot.vida == 0) {
+            	System.out.println("Bot perdeu");
+            }
+             
          
         
         }
@@ -270,8 +292,6 @@ public class Tela extends JFrame{
 
 
 }
-
-
 
 
 
