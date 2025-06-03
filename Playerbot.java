@@ -19,9 +19,31 @@ public class Playerbot extends Playerconfig {
 		
 	}
 	
+    private int decidirAcaoInteligente() {
+    	
+    	if(vida < 2 && shild < 3) {
+    		return 1;
+    	}
+    	
+    	if (ammo == 0) {
+    		return 2;
+    	}
+    	
+    	if(alvo.shild == 0 && alvo.vida == 2) {
+    		return 0;
+    	}
+    	
+    	int situacao = random.nextInt(10);
+    	switch(situacao) {
+    	case 0,1,2,3,4,5 -> {return 0;}
+    	case 6,7 -> {return 1;}
+    	case 8,9 -> {return 2;}
+    	}
+		return situacao;
+    }
 	public void acaobot() {
         
-        int acao = random.nextInt(3);
+        int acao = decidirAcaoInteligente();
 
         // precisa disso pra zerar os estados anteriores
         botshoot = false; 
@@ -55,6 +77,9 @@ public class Playerbot extends Playerconfig {
                 break;
         
             }
+        
+       
+        
         actCD = true;
         
         if (countdown != null && countdown.isRunning()){
