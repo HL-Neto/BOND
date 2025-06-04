@@ -1,29 +1,24 @@
-package bond;
 
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.event.KeyAdapter;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Tela extends JFrame{
     
     int width = 1024;
     int height = 683;
 
+    
     Timer executionTimer; 
    
+    Cards cartas = new Cards();
     Playerbot bot = new Playerbot();
     Player player = new Player();
 
     JPanel menuPainel = new JPanel() {
-        Image menu_fundo = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\menu_background.png").getImage();
+        Image menu_fundo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\menu_background.png").getImage();
 
             @Override
             protected void paintComponent(Graphics g) {
@@ -46,7 +41,7 @@ public class Tela extends JFrame{
         add(menuPainel);
 
         setVisible(true);
-        
+
         player.setAlvo(bot);
         bot.setAlvo(player);
     }
@@ -67,8 +62,8 @@ public class Tela extends JFrame{
         
         // opções + botões //
 
-        JButton playButton = new JButton(new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\play_buttom.png"));  //substituir por imagem//
-        JButton exitButton = new JButton(new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\exit_buttom.png"));
+        JButton playButton = new JButton(new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\play_buttom.png"));  //substituir por imagem//
+        JButton exitButton = new JButton(new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\exit_buttom.png"));
 
 
         // retira as configurações default + coloca um background vermelho 
@@ -119,26 +114,48 @@ public class Tela extends JFrame{
     // Cria o painel com a imagem de fundo
     JPanel fasePainel = new JPanel() {
         
-        Image fundo = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\fase_background.png").getImage();
+        Image fundo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\fase_background.png").getImage();
         
+        boolean mao_esquerda_on = true;
         //player//
-        Image mao_direita = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\mao_direita.png").getImage();
-        Image disparo = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\disparo.png").getImage();   
-        Image recarga = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\recarregar.png").getImage(); 
-        Image escudo_1 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\escudo.png").getImage();
-        Image escudo_2 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\escudo_2.png").getImage();
-        Image escudo_3 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\escudo_3.png").getImage();
         
+        Image mao_esquerda = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\mao_esquerda.png").getImage();
+        Image mao_direita = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\mao_direita.png").getImage();
+        Image disparo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\disparo.png").getImage();   
+        Image recarga = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\recarregar.png").getImage(); 
+        Image escudo_1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo.png").getImage();
+        Image escudo_2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo_2.png").getImage();
+        Image escudo_3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\escudo_3.png").getImage();
+        Image noAmmo = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\no_ammo.png").getImage();
+        Image vidax3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\vida3x.png").getImage();
+        Image vidax2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\vida2x.png").getImage();
+        Image vidax1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\vida1x.png").getImage();
+        Image balax4 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bala4x.png").getImage();
+        Image balax3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bala3x.png").getImage();
+        Image balax2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bala2x.png").getImage();
+        Image balax1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bala1x.png").getImage();
         //bot//
        
-       Image bandido = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\bandido.png").getImage();
-       Image botescudo_1 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botescudo_1.png").getImage();
-       Image botescudo_2 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botescudo_2.png").getImage();
-       Image botescudo_3 = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botescudo_3.png").getImage();
-       Image bottiro = new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\bottiro.png").getImage();
-       Image botrecarga =  new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botrecarga.png").getImage();
-       Image botdano =  new ImageIcon("D:\\lucas\\Facul\\java\\bondimg\\botdano.png").getImage();
+       Image bandido = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bandido.png").getImage();
+       Image botescudo_1 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_1.png").getImage();
+       Image botescudo_2 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_2.png").getImage();
+       Image botescudo_3 = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botescudo_3.png").getImage();
+       Image bottiro = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\bottiro.png").getImage();
+       Image botrecarga =  new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botrecarga.png").getImage();
+       Image botdano =  new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\botdano.png").getImage();
+       
+       // cartas //
+
+        Image healImage = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\heal_card.png").getImage();
+        Image imunitImage = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\imunity_card.png").getImage();
+        Image extraShildImage = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\extraShild_card.png").getImage();
+        Image extraAmmoImage = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\extraAmmo_card.png").getImage();
+        Image curseAmmoImage = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\curseAmmo_card.png").getImage();
+        Image doubleDMGImage = new ImageIcon("C:\\Users\\Humberto Luna\\Documents\\bond\\image\\extraDmg_card.png").getImage();
+
         
+
+         
 
        @Override
         protected void paintComponent(Graphics g) {
@@ -147,20 +164,20 @@ public class Tela extends JFrame{
           
             g.drawImage(fundo, 0, 0, getWidth(), getHeight(), this);
             g.drawImage(mao_direita, 0, 0, getWidth(), getHeight(), this);
-            
-            
+            g.drawImage(mao_esquerda, 0, 0, getWidth(), getHeight(), this);
+          
 
             // player if //
             
             if (player.atirar) {
                 
-                if (player.ammo > 0){
+                if (player.ammo >= 1 ){
                     g.drawImage(disparo, 0, 0, getWidth(), getHeight(), this);
                 }else{
-                     g.drawImage(mao_direita, 0, 0, getWidth(), getHeight(), this);
+                    g.drawImage(noAmmo, 0, 0, getWidth(), getHeight(), this);
                 } 
             }
-
+            
             
             if (player. municao) {
                 g.drawImage(recarga, 0, 0, getWidth(), getHeight(), this);
@@ -169,31 +186,65 @@ public class Tela extends JFrame{
             
             if (player.shild == 1){
                 g.drawImage(escudo_1, 0, 0, getWidth(), getHeight(), this);
-                repaint();
+                
             }
             if (player.shild == 2){
                 g.drawImage(escudo_2, 0, 0, getWidth(), getHeight(), this);
-                repaint();
+                
             }
             if (player.shild == 3){
                 g.drawImage(escudo_3, 0, 0, getWidth(), getHeight(), this);
-                repaint();
+                
             }
-            if(player.vida == 0) {
-            	System.out.println("Jogador perdeu");
+            
+            
+            
+            if (player.ammo == 1){
+                g.drawImage(balax1, 0, 0, getWidth(), getHeight(), this);
+                
             }
+            if (player.ammo == 2){
+                g.drawImage(balax2, 0, 0, getWidth(), getHeight(), this);
+                
+            }
+            if (player.ammo == 3){
+                g.drawImage(balax3, 0, 0, getWidth(), getHeight(), this);
+                
+            }
+             if (player.ammo == 4){
+                g.drawImage(balax4, 0, 0, getWidth(), getHeight(), this);
+                
+            }
+          
+          
 
-            // bot if //
            
+            if (player.vida == 1){
+                g.drawImage(vidax1, 0, 0, getWidth(), getHeight(), this);
+                
+            }
+            if (player.vida == 2){
+                g.drawImage(vidax2, 0, 0, getWidth(), getHeight(), this);
+                
+            }
+            if (player.vida == 3){
+                g.drawImage(vidax3, 0, 0, getWidth(), getHeight(), this);
+              
+            }
+            
+            
+           
+           // bot //
+            
             if (bot.botshoot) {
                 g.drawImage(bottiro, 0, 0, getWidth(), getHeight(), this);
-                repaint();
+           
             
             } else if (bot.botrell) {
                
+                
                 g.drawImage(botrecarga, 0, 0, getWidth(), getHeight(), this);
-                repaint();
-            
+              
             } else {
                 g.drawImage(bandido, 0, 0, getWidth(), getHeight(), this);
             }
@@ -201,22 +252,67 @@ public class Tela extends JFrame{
             
             if (bot.shild == 1){
                 g.drawImage(botescudo_1, 0, 0, getWidth(), getHeight(), this);
-                repaint();
+              
             }
             if (bot.shild == 2){
                 g.drawImage(botescudo_2, 0, 0, getWidth(), getHeight(), this);
-                repaint();
+          
             }
             if (bot.shild == 3){
                 g.drawImage(botescudo_3, 0, 0, getWidth(), getHeight(), this);
-                repaint();
+                
             }
-            if (bot.vida == 0) {
-            	System.out.println("Bot perdeu");
+            
+            // game if //
+
+            
+            if ( player.turno % 2 == 0 || player.turno == 0){
+                
+                cartas = new Cards();
+                cartas.CardsSorteio();
+                
+                if(cartas.heal){
+
+                    g.drawImage(healImage, 0, 0, getWidth(), getHeight(), this);
+                   
+
+
+                }
+                if(cartas.imunidade){
+
+                    g.drawImage(imunitImage, 0, 0, getWidth(), getHeight(), this);
+                      repaint();
+
+
+                }
+                if(cartas.extraShild){
+
+                    g.drawImage(extraShildImage, 0, 0, getWidth(), getHeight(), this);
+                    
+
+
+                }
+                 if(cartas.extraAmmo){
+
+                    g.drawImage(extraAmmoImage, 0, 0, getWidth(), getHeight(), this);
+                   
+
+
+                }
+                 if(cartas.curseAmmo){
+
+                    g.drawImage(curseAmmoImage, 0, 0, getWidth(), getHeight(), this);
+                    
+
+                }
+                 if(cartas.doubleDMG){
+
+                    g.drawImage(doubleDMGImage, 0, 0, getWidth(), getHeight(), this);
+                   
+                }
             }
-             
-         
         
+
         }
     };
     
@@ -254,6 +350,8 @@ public class Tela extends JFrame{
             // cria o time pra cada circunstancia//
             if (player.atirar || player.defender || player.municao){
 
+        
+                    
                     fasePainel.repaint();
 
                     // Inicia um Timer que dura 1 segundo
@@ -292,6 +390,8 @@ public class Tela extends JFrame{
 
 
 }
+
+
 
 
 
