@@ -1,12 +1,19 @@
-package bond;
+
 import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 
 public class Player extends Playerconfig {
 
-    
+    int turno = 0;
+
     public Player() {
-        super(0, 0, 3);
+
+        super(0, 0,3);
+
+        Cards cartas = new Cards(); // Cria nova instância
+        cartas.setAlvos(new Playerconfig[] { this }); // Define o próprio bot como alvo
+        cartas.CardsSorteio(); // Aplica efeito de uma carta aleatória no b
+    
     }
 
   
@@ -47,11 +54,12 @@ public class Player extends Playerconfig {
         countdown = new Timer(5000, evt -> {
             System.out.println("NOVO TURNO!!");
             actCD = false;
+            turno++;
         });
 
         countdown.setRepeats(false);
         countdown.start();
     }
 }
-    }
-}
+    
+
