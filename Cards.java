@@ -1,36 +1,113 @@
-// ta tudo errado -- tirei o package pq tava dando um erro no meu 
-
-
+import java.util.Random;
 
 public class Cards {
-private Playerconfig player;
+
     
-    public Cards(Playerconfig player) {
-        this.player = player;
+    private Random random = new Random();
+    
+    
+    public String primeiraMao;
+    public String segundaMao;
+
+    public boolean heal = false,extraShild = false,imunidade = false,extraAmmo = false,curseAmmo = false,doubleDMG = false;
+    
+    
+    public void CardsSorteio() {
+        
+
+        String[] cards = {"Hearts" , "Spades", "Clubs", "Diamond" } ;
+
+        this.primeiraMao = cards[random.nextInt(2)];
+        this.segundaMao = cards[random.nextInt(2)+2];
+
+        CardsEffect();
+        
     }
     
+    public void CardsEffect(){
+        
+        switch (primeiraMao) {
+            case "Hearts":
+                
+                this.heal = true;
+                
+                heal();
+            break;
+        
+            case "Spades":
+               ;
+
+                if(random.nextBoolean()){
+                    
+                    extraShild = true;
+                    extraShild();
+                } else {
+
+                    imunidade = true;
+                    imunidade();
+                }
+
+            break;
+        
+        }
+        switch (segundaMao){
+            
+            case "Clubs" :
+                if(random.nextBoolean()){
+                    
+                    extraAmmo = true;
+                    extraAmmo();
+                } else {
+
+                    curseAmmo = true;
+                    curseAmmo();
+                }
+            break;
+            
+            case  "Diamond":
+
+                   doubleDMG = true;
+                   doubleDMG();
+            
+            break;
+        }   
+    }
+    // Hearts //
+    public void heal(){
+        
+        
+    }
+
+
+    // spades//
     public void extraShild() {
-        player.DEF();  
+       
+    
     }
 
     public void imunidade(){
        
+    
     }
 
-    public void heal(){
-        player.vida += 1;
-    }
+    // diamond //
 
     public void doubleDMG(){
-        player.SHT();
+       
+    
     }
 
+
+    // clubs //
+
     public void extraAmmo(){
-        player.ammo += 1;
+      
+        
     }
 
     public void curseAmmo(){
-        // - bala anemy
+        
+
     }
     
 
