@@ -1,4 +1,4 @@
-package bond;
+
 
 import javax.swing.Timer;
 
@@ -27,9 +27,12 @@ public class Playerconfig {
     	this.ammo = ammo;
     	this.shild = shild;
     	this.vida = vida;
-   	
-       
+
+        
     }
+        
+    
+    
 
     public int REL(){
 
@@ -58,7 +61,7 @@ public class Playerconfig {
     public int SHT(){
     	
 
-        if( ammo <= 0 || alvo == null  ){
+        if( ammo < 1  ){
         	System.out.println("Sem municao");
             
             return ammo;
