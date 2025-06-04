@@ -1,10 +1,11 @@
-package bond;
+
 import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 
 public class Player extends Playerconfig {
 
-    
+    int turno = 0;
+
     public Player() {
         super(0, 0, 3);
     }
@@ -47,11 +48,12 @@ public class Player extends Playerconfig {
         countdown = new Timer(5000, evt -> {
             System.out.println("NOVO TURNO!!");
             actCD = false;
+            this.turno++;
         });
 
         countdown.setRepeats(false);
         countdown.start();
     }
 }
-    }
-}
+    
+
